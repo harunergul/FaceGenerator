@@ -29,200 +29,152 @@ namespace Face_Generator
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnUploadHair = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.layoutFace = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnLoadSaclar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnUploadFaces = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.layoutFace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // btnStart
             // 
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(150, 254);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Saclar";
+            this.btnStart.Location = new System.Drawing.Point(548, 34);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(56, 254);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Basla";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // pictureBox4
+            // btnUploadHair
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(4, 195);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
+            this.btnUploadHair.Location = new System.Drawing.Point(19, 12);
+            this.btnUploadHair.Name = "btnUploadHair";
+            this.btnUploadHair.Size = new System.Drawing.Size(123, 23);
+            this.btnUploadHair.TabIndex = 3;
+            this.btnUploadHair.Text = "Saçları Seç";
+            this.btnUploadHair.UseVisualStyleBackColor = true;
+            this.btnUploadHair.Click += new System.EventHandler(this.btnLoadSaclar_Click);
             // 
-            // pictureBox3
+            // tableLayoutPanel1
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(4, 141);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.63134F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.36866F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox9, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 53);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(197, 470);
+            this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // pictureBox2
+            // pictureBox9
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(4, 87);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox9.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(60, 59);
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(81, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(105, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // layoutFace
+            // 
+            this.layoutFace.AutoScroll = true;
+            this.layoutFace.ColumnCount = 2;
+            this.layoutFace.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.63134F));
+            this.layoutFace.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.36866F));
+            this.layoutFace.Controls.Add(this.pictureBox1, 0, 0);
+            this.layoutFace.Controls.Add(this.textBox2, 1, 0);
+            this.layoutFace.Location = new System.Drawing.Point(232, 56);
+            this.layoutFace.Name = "layoutFace";
+            this.layoutFace.RowCount = 3;
+            this.layoutFace.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.layoutFace.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.layoutFace.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.layoutFace.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.layoutFace.Size = new System.Drawing.Size(194, 467);
+            this.layoutFace.TabIndex = 5;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, 32);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(60, 59);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-             // 
-            // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox8);
-            this.groupBox2.Controls.Add(this.pictureBox7);
-            this.groupBox2.Controls.Add(this.pictureBox6);
-            this.groupBox2.Controls.Add(this.pictureBox5);
-            this.groupBox2.Location = new System.Drawing.Point(224, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(150, 254);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "YuzTipi";
+            // textBox2
             // 
-            // pictureBox8
+            this.textBox2.Location = new System.Drawing.Point(79, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(105, 20);
+            this.textBox2.TabIndex = 1;
             // 
-            this.pictureBox8.Location = new System.Drawing.Point(4, 186);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 7;
-            this.pictureBox8.TabStop = false;
+            // btnUploadFaces
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Location = new System.Drawing.Point(4, 132);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 6;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(4, 87);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Location = new System.Drawing.Point(4, 32);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 41);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(392, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 254);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Basla";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnLoadSaclar
-            // 
-            this.btnLoadSaclar.Location = new System.Drawing.Point(24, 293);
-            this.btnLoadSaclar.Name = "btnLoadSaclar";
-            this.btnLoadSaclar.Size = new System.Drawing.Size(123, 23);
-            this.btnLoadSaclar.TabIndex = 3;
-            this.btnLoadSaclar.Text = "Saçları Yükle";
-            this.btnLoadSaclar.UseVisualStyleBackColor = true;
-            this.btnLoadSaclar.Click += new System.EventHandler(this.btnLoadSaclar_Click);
+            this.btnUploadFaces.Location = new System.Drawing.Point(232, 12);
+            this.btnUploadFaces.Name = "btnUploadFaces";
+            this.btnUploadFaces.Size = new System.Drawing.Size(123, 23);
+            this.btnUploadFaces.TabIndex = 6;
+            this.btnUploadFaces.Text = "Yüzleri Seç";
+            this.btnUploadFaces.UseVisualStyleBackColor = true;
+            this.btnUploadFaces.Click += new System.EventHandler(this.btnUploadFaces_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 366);
-            this.Controls.Add(this.btnLoadSaclar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(634, 661);
+            this.Controls.Add(this.btnUploadFaces);
+            this.Controls.Add(this.layoutFace);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.btnUploadHair);
+            this.Controls.Add(this.btnStart);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.layoutFace.ResumeLayout(false);
+            this.layoutFace.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnUploadHair;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TableLayoutPanel layoutFace;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnLoadSaclar;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnUploadFaces;
     }
 }
 
