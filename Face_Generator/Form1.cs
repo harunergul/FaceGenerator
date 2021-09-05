@@ -15,8 +15,10 @@ namespace Face_Generator
 {
     public partial class Form1 : Form
     {
+        public ArrayList hairList = new ArrayList();
+        public ArrayList faceList = new ArrayList();
 
-        public Dictionary<String, TextBox> textboxes = new Dictionary<string, TextBox>();
+        //public Dictionary<String, TextBox> textboxes = new Dictionary<string, TextBox>();
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +42,8 @@ namespace Face_Generator
                     this.tableLayoutPanel1.RowCount = 0;
 
 
-                    RemoveOldValues("hair");
+                   // RemoveOldValues("hair");
+                    hairList.Clear();
 
 
                     int row = 0;
@@ -71,13 +74,23 @@ namespace Face_Generator
 
                                     };
 
+
+                                    Hair hair = new Hair()
+                                    {
+                                        Picture = picture,
+                                        textBox = textbox,
+                                        index = row
+                                    };
+
+                                    hairList.Add(hair);
+
                                     this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
                                     this.tableLayoutPanel1.Controls.Add(picture,0, row);
                                     this.tableLayoutPanel1.Controls.Add(textbox, 1, row);
                                     this.tableLayoutPanel1.RowCount += 1;
                                     row += 1;
 
-                                    textboxes.Add(textbox.Name, textbox);
+                                  //  textboxes.Add(textbox.Name, textbox);
 
                                     
 
@@ -96,19 +109,7 @@ namespace Face_Generator
             }
         }
 
-        private void RemoveOldValues(string value)
-        {
-            foreach (KeyValuePair<String, TextBox> entry in textboxes)
-            {
-                if (entry.Key.Contains(value))
-                {
-                    textboxes.Remove(entry.Key);
-                }
-                
-
-            } 
-        }
-
+ 
         private void btnUploadFaces_Click(object sender, EventArgs e)
         {
             using (var opnDlg = new OpenFileDialog()) //ANY dialog
@@ -125,6 +126,7 @@ namespace Face_Generator
                     this.layoutFace.Controls.Clear();
                     this.layoutFace.RowCount = 0;
 
+                    faceList.Clear();
                     int row = 0;
                     foreach (String file in opnDlg.FileNames)
                     {
@@ -152,6 +154,14 @@ namespace Face_Generator
                                         Name = "face_count_" + row,
                                         
                                     };
+                                    Face hair = new Face()
+                                    {
+                                        Picture = picture,
+                                        textBox = textbox,
+                                        index = row
+                                    };
+
+                                    faceList.Add(hair);
 
                                     this.layoutFace.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
                                     this.layoutFace.Controls.Add(picture, 0, row);
@@ -175,20 +185,43 @@ namespace Face_Generator
 
         }
 
-
-        private void GetHair()
+        private static int GetRandomHair(ArrayList sac_list)
         {
-            ArrayList arlist = new ArrayList();
-            foreach (KeyValuePair<String, TextBox> entry in textboxes)
+            bool available = false;
+            foreach (Hair hair in sac_list)
             {
-                if (entry.Key.Contains("hair"))
+                int sac = Int32.Parse(hair.textBox.Text);
+                if (sac > 0)
                 {
-                    var value = entry.Value.Text;
-                    arlist.Add(value);
+                    available = true;
+                }
+            }
+
+            if (available)
+            {
+                Random r = new Random();
+                int rInt = r.Next(0, sac_list.Count);
+
+                Hair hair = (Hair) sac_list[rInt];
+                int value = hair.GetCount();
+                if (value > 0)
+                {
+                    hair.SetCount(value - 1);
+                    return rInt;
+                }
+                else
+                {
+                    return GetRandomHair(sac_list);
                 }
 
 
             }
+            else
+            {
+                return -1;
+            }
+
+
 
         }
 
@@ -196,8 +229,70 @@ namespace Face_Generator
         {
 
 
+            var map = new Dictionary<int, int[]>();
 
-           
+            int index = 0;
+            foreach (Face face in faceList)
+            {
+
+                map.Add(index, new int[hairList.Count]);
+
+                int loopVariable = Int32.Parse(face.textBox.Text);
+                while (loopVariable > 0)
+                {
+                    int hair = GetRandomHair(hairList);
+                    if (hair != -1)
+                    {
+                        map[index][hair]++;
+                    }
+                    loopVariable--;
+                }
+
+                index += 1;
+            }
+
+            foreach (KeyValuePair<int, int[]> entry in map)
+            {
+
+                Face face =(Face) faceList[entry.Key];
+
+                Console.WriteLine("Face " + entry.Key);
+                int indexx = 0;
+                int total = 0;
+                foreach (int value in entry.Value)
+                {
+                    if (indexx == 0)
+                        Console.Write("Yesil    : ");
+                    if (indexx == 1)
+                        Console.Write("Turuncu  : ");
+                    if (indexx == 2)
+                        Console.Write("Kırmızı  : ");
+                    if (indexx == 3)
+                        Console.Write("Sarı     : ");
+                    if (indexx == 4)
+                        Console.Write("Siyah    : ");
+                    Console.WriteLine(value + " ");
+
+                    Hair hair = (Hair)hairList[indexx];
+
+                    // ----- Merge Image ---
+
+                    PictureBox faceImage = face.Picture;
+                    PictureBox hairImage = hair.Picture;
+                    // value ise ilgili yuz ve sactan kactane uretilecegini belirtir.
+
+
+
+                    total += value;
+                    indexx++;
+                }
+
+                Console.WriteLine("Toplam sac miktarı: " + total);
+                Console.WriteLine("--------------");
+
+
+            }
+
 
         }
     }
