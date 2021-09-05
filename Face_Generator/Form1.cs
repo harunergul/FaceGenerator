@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
@@ -229,69 +232,108 @@ namespace Face_Generator
         {
 
 
-            var map = new Dictionary<int, int[]>();
-
-            int index = 0;
-            foreach (Face face in faceList)
+            using (var fbd = new FolderBrowserDialog())
             {
+                DialogResult result = fbd.ShowDialog();
 
-                map.Add(index, new int[hairList.Count]);
-
-                int loopVariable = Int32.Parse(face.textBox.Text);
-                while (loopVariable > 0)
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    int hair = GetRandomHair(hairList);
-                    if (hair != -1)
+
+
+
+                    /*
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+
+                    System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                    */
+
+
+                    var map = new Dictionary<int, int[]>();
+
+                    int index = 0;
+                    foreach (Face face in faceList)
                     {
-                        map[index][hair]++;
+
+                        map.Add(index, new int[hairList.Count]);
+
+                        int loopVariable = Int32.Parse(face.textBox.Text);
+                        while (loopVariable > 0)
+                        {
+                            int hair = GetRandomHair(hairList);
+                            if (hair != -1)
+                            {
+                                map[index][hair]++;
+                            }
+                            loopVariable--;
+                        }
+
+                        index += 1;
                     }
-                    loopVariable--;
-                }
+                    
+                    int generatedImageCount = 0;
+                    int fileNameIndex = 0;
+                    foreach (KeyValuePair<int, int[]> entry in map)
+                    {
 
-                index += 1;
+                        Face face = (Face)faceList[entry.Key];
+
+                        Console.WriteLine("Face " + entry.Key);
+                        int indexx = 0;
+                        int total = 0;
+                        foreach (int value in entry.Value)
+                        {
+                            if (indexx == 0)
+                                Console.Write("Yesil    : ");
+                            if (indexx == 1)
+                                Console.Write("Turuncu  : ");
+                            if (indexx == 2)
+                                Console.Write("Kırmızı  : ");
+                            if (indexx == 3)
+                                Console.Write("Sarı     : ");
+                            if (indexx == 4)
+                                Console.Write("Siyah    : ");
+                            Console.WriteLine(value + " ");
+
+                            Hair hair = (Hair)hairList[indexx];
+
+                            // ----- Merge Image ---
+
+                            PictureBox faceImage = face.Picture;
+                            PictureBox hairImage = hair.Picture;
+                            // value ise ilgili yuz ve sactan kactane uretilecegini belirtir.
+
+
+                            for(int i = 0; i < value; i++)
+                            {
+                                var target = new Bitmap(faceImage.Image.Width, faceImage.Image.Height, PixelFormat.Format32bppArgb);
+                           
+                                Graphics g = Graphics.FromImage(target);
+                                g.CompositingMode = CompositingMode.SourceOver;
+
+                                g.DrawImage(faceImage.Image, 0, 0);
+                                g.DrawImage(hairImage.Image, 0, 0); 
+
+                                target.Save(fbd.SelectedPath+"/output"+ fileNameIndex + ".png", ImageFormat.Png);
+                                fileNameIndex++;
+                            }
+
+
+                            total += value;
+                            generatedImageCount += value;
+                            indexx++;
+                            
+                        }
+                        
+                        Console.WriteLine("Toplam sac miktarı: " + total);
+                        Console.WriteLine("--------------");
+
+
+                    }
+                    System.Windows.Forms.MessageBox.Show("Generated File Count: " + generatedImageCount, "Message");
+                }
             }
 
-            foreach (KeyValuePair<int, int[]> entry in map)
-            {
-
-                Face face =(Face) faceList[entry.Key];
-
-                Console.WriteLine("Face " + entry.Key);
-                int indexx = 0;
-                int total = 0;
-                foreach (int value in entry.Value)
-                {
-                    if (indexx == 0)
-                        Console.Write("Yesil    : ");
-                    if (indexx == 1)
-                        Console.Write("Turuncu  : ");
-                    if (indexx == 2)
-                        Console.Write("Kırmızı  : ");
-                    if (indexx == 3)
-                        Console.Write("Sarı     : ");
-                    if (indexx == 4)
-                        Console.Write("Siyah    : ");
-                    Console.WriteLine(value + " ");
-
-                    Hair hair = (Hair)hairList[indexx];
-
-                    // ----- Merge Image ---
-
-                    PictureBox faceImage = face.Picture;
-                    PictureBox hairImage = hair.Picture;
-                    // value ise ilgili yuz ve sactan kactane uretilecegini belirtir.
-
-
-
-                    total += value;
-                    indexx++;
-                }
-
-                Console.WriteLine("Toplam sac miktarı: " + total);
-                Console.WriteLine("--------------");
-
-
-            }
+            
 
 
         }
